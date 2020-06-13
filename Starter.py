@@ -17,7 +17,7 @@ def init():
         print('Good Morning, I am your virtual assistant')
     else:
         print('Good Afternoon, I am your virtual assistant')
-    print('How can i helpyou today?')
+    print('How can i help you today?')
     response = input()
     # udata.close()
 
