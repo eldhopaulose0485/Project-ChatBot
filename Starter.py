@@ -4,7 +4,6 @@
 
 import datetime as dt
 
-
 def init():
     print('\n############################')
     print('    Welcome To Chat-Bot')
@@ -15,8 +14,9 @@ def init():
         print('Good Morning, I am your virtual Tour Guide')
     else:
         print('Good Afternoon, I am your virtual Tour Guide')
-    print('How can i help you today?')
-    # response = input()
+    print('Where do you want to explore today?')
+    response = input()
+    
 
 
 init()
