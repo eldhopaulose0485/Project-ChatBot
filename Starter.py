@@ -6,20 +6,17 @@ import datetime as dt
 
 
 def init():
-    # udata = open('userdata.cbdb', 'w')
-    print('############################')
+    print('\n############################')
     print('    Welcome To Chat-Bot')
-    print('############################')
-    # udata.write('Chat-Bot Database\n')
+    print('############################\n')
     cloak = str(dt.datetime.now()).split(' ')
     cloak = str(cloak[1]).split(':')
     if int(cloak[0]) < 12:
-        print('Good Morning, I am your virtual assistant')
+        print('Good Morning, I am your virtual Tour Guide')
     else:
-        print('Good Afternoon, I am your virtual assistant')
+        print('Good Afternoon, I am your virtual Tour Guide')
     print('How can i help you today?')
     response = input()
-    # udata.close()
 
 
 init()
