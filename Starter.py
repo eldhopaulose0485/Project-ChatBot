@@ -16,7 +16,7 @@ def init():
     else:
         print('Good Afternoon, I am your virtual Tour Guide')
     print('How can i help you today?')
-    response = input()
+    # response = input()
 
 
 init()
