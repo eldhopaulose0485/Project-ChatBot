@@ -54,6 +54,7 @@ def placeFix():
         fixResponse = input().lower()
         if fixResponse.find('change') >= 0:
             placeFix()
+            break
         elif fixResponse.find('fix') >= 0:
             print(response + ' Fixed as destination')
             speak(response + ' Fixed as destination')
