@@ -38,16 +38,18 @@ def placeFix():
     speak('Where do you want to explore today?')
     global response
     response = input()
-    links = list(search('about ' + response,
-                        tld="co.in", num=10, stop=10, pause=2))
-    # print(links[0])
+    links = list(search('tourist attractions of  ' + response,
+                        tld="com", num=20, stop=20, pause=2))
+    print(link)
     for link in links:
-        if str(link).find('wikipedia'):
-            webview.create_window('Hello world', str(link))
-            print('Here are the details')
-            speak('here are the details')
+        if str(link).find('tripadvisor') >= 0:
+            webview.create_window(response, str(link))
+            print('Here are the Attractins of ' + response)
+            speak('here are the Attractins of ' + response)
             webview.start()
             break
+    else:
+        webview.create_window(response, str(links[0]))
     print('\nDo you want to fix ' + response + ' or change?')
     speak('Do you want to fix ' + response + ' or change?')
     while(1):
