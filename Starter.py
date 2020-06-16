@@ -10,7 +10,26 @@ import pyttsx3
 engine = pyttsx3.init()
 engine.setProperty('rate', 150)
 
+
+def engWordsList():
+    englishwords = open('Databases/english_words.txt')
+    wordslist = englishwords.readlines()
+    return wordslist
+
+
+def engWords(word):
+    englishwords = open('Databases/english_words.txt')
+    aWord = englishwords.readline()
+    while aWord:
+        if aWord == word + '\n':
+            return True
+        aWord = englishwords.readline()
+    else:
+        return False
+
+
 response = ''
+
 
 def speak(word):
     engine.say(word)
@@ -33,11 +52,17 @@ def init():
     placeFix()
 
 
-def placeFix():
+def placeFix(t=0):
     print('Where do you want to explore today?')
     speak('Where do you want to explore today?')
     global response
-    response = input()
+    while 1:
+        response = input()
+        if response + '\n' in engWordsList():
+            print('Please provide the name of a place to proceed')
+            speak('Please provide the name of a place to proceed')
+        else:
+            break
     links = list(search('tourist attractions of  ' + response,
                         tld="com", num=20, stop=20, pause=2))
     # print(links)
@@ -55,7 +80,7 @@ def placeFix():
     while(1):
         fixResponse = input().lower()
         if fixResponse.find('change') >= 0:
-            placeFix()
+            placeFix(1)
             break
         elif fixResponse.find('fix') >= 0:
             print(response + ' Fixed as destination')
@@ -64,13 +89,15 @@ def placeFix():
         else:
             print('Do you want to fix ' + response + ' or want change?')
             speak('Do you want to fix ' + response + ' or want change?')
-    step2()
+    if t==0:
+        step2()
+    else:
+        pass
 
 
 def step2():
     print('Do you want to know attractions of ' + response + '?')
     speak('Do you want to know attractions of ' + response + '?')
-    
 
 
 init()
