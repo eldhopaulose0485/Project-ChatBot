@@ -7,6 +7,7 @@ from googlesearch import search
 import webview
 import pyttsx3
 
+
 engine = pyttsx3.init()
 engine.setProperty('rate', 150)
 
@@ -15,20 +16,6 @@ def engWordsList():
     englishwords = open('Databases/english_words.txt')
     wordslist = englishwords.readlines()
     return wordslist
-
-
-def engWords(word):
-    englishwords = open('Databases/english_words.txt')
-    aWord = englishwords.readline()
-    while aWord:
-        if aWord == word + '\n':
-            return True
-        aWord = englishwords.readline()
-    else:
-        return False
-
-
-response = ''
 
 
 def speak(word):
@@ -52,7 +39,7 @@ def init():
     placeFix()
 
 
-def placeFix(t=0):
+def placeFix(secondCall=False):
     print('Where do you want to explore today?')
     speak('Where do you want to explore today?')
     global response
@@ -75,12 +62,15 @@ def placeFix(t=0):
             break
     else:
         webview.create_window(response, str(links[0]))
+        print('Here are the Attractins of ' + response)
+        speak('here are the Attractins of ' + response)
+        webview.start()
     print('\nDo you want to fix ' + response + ' or change?')
     speak('Do you want to fix ' + response + ' or change?')
     while(1):
         fixResponse = input().lower()
         if fixResponse.find('change') >= 0:
-            placeFix(1)
+            placeFix(True)
             break
         elif fixResponse.find('fix') >= 0:
             print(response + ' Fixed as destination')
@@ -89,15 +79,25 @@ def placeFix(t=0):
         else:
             print('Do you want to fix ' + response + ' or want change?')
             speak('Do you want to fix ' + response + ' or want change?')
-    if t==0:
+    if secondCall == False:
         step2()
     else:
         pass
 
 
 def step2():
-    print('Do you want to know attractions of ' + response + '?')
-    speak('Do you want to know attractions of ' + response + '?')
+    print('Do you want to see the map of ' + response + '?')
+    speak('Do you want to see the map of ' + response + '?')
+    mapRespond = input().lower()
+    if mapRespond.find('yes') >= 0 or mapRespond.find('ok') >= 0 or mapRespond.find('see') >= 0:
+        webview.create_window(
+            response, 'https://www.google.com/maps/place/' + response)
+        print('Here is the map of ' + response)
+        speak('here is the map of ' + response)
+        webview.start()
+    else:
+        print('')
+        speak('')
 
 
 init()
