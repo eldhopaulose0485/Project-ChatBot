@@ -40,7 +40,7 @@ def placeFix():
     response = input()
     links = list(search('tourist attractions of  ' + response,
                         tld="com", num=20, stop=20, pause=2))
-    print(links)
+    # print(links)
     for link in links:
         if str(link).find('tripadvisor') >= 0:
             webview.create_window(response, str(link))
