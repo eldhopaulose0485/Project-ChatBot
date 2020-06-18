@@ -6,6 +6,7 @@ import datetime as dt
 from googlesearch import search
 import webview
 import pyttsx3
+import webbrowser
 
 
 engine = pyttsx3.init()
@@ -89,15 +90,30 @@ def step2():
     print('Do you want to see the map of ' + response + '?')
     speak('Do you want to see the map of ' + response + '?')
     mapRespond = input().lower()
-    if mapRespond.find('yes') >= 0 or mapRespond.find('ok') >= 0 or mapRespond.find('see') >= 0:
+    if mapRespond.find('ye') >= 0 or mapRespond.find('ok') >= 0 or mapRespond.find('see') >= 0:
         webview.create_window(
             response, 'https://www.google.com/maps/place/' + response)
         print('Here is the map of ' + response)
         speak('here is the map of ' + response)
         webview.start()
-    else:
-        print('')
-        speak('')
+    roomsFind()
+
+
+def roomsFind():
+    print('Then do you want to see available rooms in ' + response)
+    speak('Then do you want to see available rooms in ' + response)
+    roomRespond = input()
+    if roomRespond.find('ye') >= 0 or roomRespond.find('ok') >= 0 or roomRespond.find('see') >= 0:
+        print("What type of hote you are expecting?: ")
+        speak("What type of hote you are expecting?: ")
+        hotelType = input()
+        links = list(search(hotelType + 'oyo rooms in ' + response,
+                            tld="com", num=1, stop=1, pause=2))
+        print('Hre are the available Hotels in ' + response)
+        speak('Hre are the available Hotels in ' + response)
+        webbrowser.open(links[0], new=2)
+    print('I am waiting here for your response to help you\n')
+    speak('I am waiting here for your response to help you')
 
 
 init()
