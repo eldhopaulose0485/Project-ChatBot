@@ -104,8 +104,8 @@ def roomsFind():
     speak('Then do you want to see available rooms in ' + response)
     roomRespond = input()
     if roomRespond.find('ye') >= 0 or roomRespond.find('ok') >= 0 or roomRespond.find('see') >= 0:
-        print("What type of hote you are expecting?: ")
-        speak("What type of hote you are expecting?: ")
+        print("What type of hotels you are expecting?: ")
+        speak("What type of hotels you are expecting?: ")
         hotelType = input()
         links = list(search(hotelType + 'oyo rooms in ' + response,
                             tld="com", num=1, stop=1, pause=2))
