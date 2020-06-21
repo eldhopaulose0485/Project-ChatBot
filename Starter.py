@@ -8,9 +8,16 @@ import pyttsx3
 import webbrowser
 import time
 
-
 engine = pyttsx3.init()
 engine.setProperty('rate', 150)
+
+
+def placeCheck(links):
+    for link in links:
+        if str(link).find(response) >= 0:
+            return True
+    else:
+        return False
 
 
 def engWordsList():
@@ -46,28 +53,27 @@ def placeFix(secondCall=False):
     global response
     while 1:
         response = input()
-        if response + '\n' in engWordsList():
+        links = list(search('tourist attractions of  ' + response,
+                            tld="com", num=10, stop=10, pause=2))
+        if (not placeCheck(links)) or (response + '\n' in engWordsList()):
             print('Please provide the name of a place to proceed')
             speak('Please provide the name of a place to proceed')
         else:
             break
-    links = list(search('tourist attractions of  ' + response,
-                        tld="com", num=20, stop=20, pause=2))
-    # print(links)
     for link in links:
         if str(link).find('tripadvisor') >= 0:
             print('Here are the Attractions of ' + response)
             speak('here are the Attractions of ' + response)
-            webbrowser.open( str(link), new=2)
+            webbrowser.open(str(link), new=2)
             break
     else:
         print('Here are the Attractions of ' + response)
         speak('here are the Attractions of ' + response)
-        webbrowser.open( str(links[0]), new=2)
+        webbrowser.open(str(links[0]), new=2)
     time.sleep(10)
     print('\nDo you want to fix ' + response + ' or change?')
     speak('Do you want to fix ' + response + ' or change?')
-    while(1):
+    while 1:
         fixResponse = input().lower()
         if fixResponse.find('change') >= 0:
             placeFix(True)
@@ -113,6 +119,9 @@ def roomsFind():
         time.sleep(10)
     print('I am waiting here for your response to help you\n')
     speak('I am waiting here for your response to help you')
+
+
+# def finalStep():
 
 
 init()
