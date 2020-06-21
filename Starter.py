@@ -4,9 +4,9 @@
 
 import datetime as dt
 from googlesearch import search
-import webview
 import pyttsx3
 import webbrowser
+import time
 
 
 engine = pyttsx3.init()
@@ -56,16 +56,15 @@ def placeFix(secondCall=False):
     # print(links)
     for link in links:
         if str(link).find('tripadvisor') >= 0:
-            webview.create_window(response, str(link))
-            print('Here are the Attractins of ' + response)
-            speak('here are the Attractins of ' + response)
-            webview.start()
+            print('Here are the Attractions of ' + response)
+            speak('here are the Attractions of ' + response)
+            webbrowser.open( str(link), new=2)
             break
     else:
-        webview.create_window(response, str(links[0]))
-        print('Here are the Attractins of ' + response)
-        speak('here are the Attractins of ' + response)
-        webview.start()
+        print('Here are the Attractions of ' + response)
+        speak('here are the Attractions of ' + response)
+        webbrowser.open( str(links[0]), new=2)
+    time.sleep(10)
     print('\nDo you want to fix ' + response + ' or change?')
     speak('Do you want to fix ' + response + ' or change?')
     while(1):
@@ -80,7 +79,7 @@ def placeFix(secondCall=False):
         else:
             print('Do you want to fix ' + response + ' or want change?')
             speak('Do you want to fix ' + response + ' or want change?')
-    if secondCall == False:
+    if not secondCall:
         step2()
     else:
         pass
@@ -91,11 +90,10 @@ def step2():
     speak('Do you want to see the map of ' + response + '?')
     mapRespond = input().lower()
     if mapRespond.find('ye') >= 0 or mapRespond.find('ok') >= 0 or mapRespond.find('see') >= 0:
-        webview.create_window(
-            response, 'https://www.google.com/maps/place/' + response)
         print('Here is the map of ' + response)
         speak('here is the map of ' + response)
-        webview.start()
+        webbrowser.open('https://www.google.com/maps/place/' + response, new=2)
+        time.sleep(10)
     roomsFind()
 
 
@@ -109,9 +107,10 @@ def roomsFind():
         hotelType = input()
         links = list(search(hotelType + 'oyo rooms in ' + response,
                             tld="com", num=1, stop=1, pause=2))
-        print('Hre are the available Hotels in ' + response)
-        speak('Hre are the available Hotels in ' + response)
+        print('Here are the available Hotels in ' + response)
+        speak('Here are the available Hotels in ' + response)
         webbrowser.open(links[0], new=2)
+        time.sleep(10)
     print('I am waiting here for your response to help you\n')
     speak('I am waiting here for your response to help you')
 
