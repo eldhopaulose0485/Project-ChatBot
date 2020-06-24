@@ -9376,7 +9376,6 @@ assailment
 assailments
 assails
 assais
-assam
 assamese
 assassin
 assassinate
@@ -41294,7 +41293,6 @@ delf
 delfs
 delft
 delftware
-delhi
 deli
 delia
 delian

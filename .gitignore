@@ -1,3 +1,4 @@
 .google-cookie
 .idea/
 venv/
+__pycache__/

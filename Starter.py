@@ -7,9 +7,10 @@ from googlesearch import search
 import pyttsx3
 import webbrowser
 import time
+import airports as ap
 
 engine = pyttsx3.init()
-engine.setProperty('rate', 150)
+engine.setProperty('rate', 170)
 
 
 def placeCheck(links):
@@ -40,10 +41,10 @@ def init():
     cloak = str(cloak[1]).split(':')
     if int(cloak[0]) < 12:
         print('Good Morning, I am your virtual Tour Guide')
-        speak('Good Morning, I am your virtual Tour Guide')
+        speak('Good Morning, I am your virtual Tour Guide.')
     else:
         print('Good Afternoon, I am your virtual Tour Guide')
-        speak('Good Afternoon, I am your virtual Tour Guide')
+        speak('Good Afternoon, I am your virtual Tour Guide.')
     placeFix()
 
 
@@ -61,17 +62,17 @@ def placeFix(secondCall=False):
         else:
             break
     for link in links:
-        if str(link).find('tripadvisor') >= 0:
+        if link.find('tripadvisor') >= 0:
             print('Here are the Attractions of ' + response)
             speak('here are the Attractions of ' + response)
-            webbrowser.open(str(link), new=2)
+            webbrowser.open(link, new=2)
             break
     else:
         print('Here are the Attractions of ' + response)
         speak('here are the Attractions of ' + response)
         webbrowser.open(str(links[0]), new=2)
-    time.sleep(10)
-    print('\nDo you want to fix ' + response + ' or change?')
+    time.sleep(5)
+    print('Do you want to fix ' + response + ' or change?')
     speak('Do you want to fix ' + response + ' or change?')
     while 1:
         fixResponse = input().lower()
@@ -83,8 +84,8 @@ def placeFix(secondCall=False):
             speak(response + ' Fixed as destination')
             break
         else:
-            print('Do you want to fix ' + response + ' or want change?')
-            speak('Do you want to fix ' + response + ' or want change?')
+            print('Do you want to fix ' + response + ' or change?')
+            speak('Do you want to fix ' + response + ' or change?')
     if not secondCall:
         step2()
     else:
@@ -113,15 +114,115 @@ def roomsFind():
         hotelType = input()
         links = list(search(hotelType + 'oyo rooms in ' + response,
                             tld="com", num=1, stop=1, pause=2))
-        print('Here are the available Hotels in ' + response)
-        speak('Here are the available Hotels in ' + response)
+        print('Here are the ' + hotelType + ' Hotels in ' + response)
+        speak('Here are the ' + hotelType + ' Hotels in ' + response)
         webbrowser.open(links[0], new=2)
         time.sleep(10)
-    print('I am waiting here for your response to help you\n')
-    speak('I am waiting here for your response to help you')
 
 
-# def finalStep():
+def flightbook():
+    print('Tell me your current location')
+    speak('Tell me your current location')
+    loc = input()
+    while 1:
+        if not ap.airpcheck(loc):
+            print('There is no AirPort in this location.')
+            speak('There is no AirPort in this location.')
+            print('Tell me the state of your location')
+            speak('Tell me the state of your location')
+            tstate = input()
+            if ap.statecheck(tstate):
+                print('Here are the available airports in ' + tstate)
+                speak('Here are the available airports in ' + tstate)
+                ap.printstate(tstate)
+                print('Choose the AirPort of your location')
+                speak('Choose the AirPort of your location')
+                loc = input()
+        else:
+            break
+    print('Tell me the AirPort of your destination')
+    speak('Tell me the AirPort of your destination')
+    dairp = input()
+    while 1:
+        if not ap.airpcheck(dairp):
+            print('There is no AirPort in this location.')
+            speak('There is no AirPort in this location.')
+            print('Tell me the state of destination')
+            speak('Tell me the state of destination')
+            tstate = input()
+            if ap.statecheck(tstate):
+                print('Here are the available airports in ' + tstate)
+                speak('Here are the available airports in ' + tstate)
+                ap.printstate(tstate)
+                print('Choose the AirPort of your destination')
+                speak('Choose the AirPort of your destination')
+                dairp = input()
+        else:
+            break
+    print('Enter date in the format dd/mm/yyyy')
+    speak('Enter date in the format as given')
+    date = input().split('/')
+    flightlink = 'https://flight.yatra.com/air-search-ui/seodom/trigger?type=O&viewName=normal&flexi=0&noOfSegments=1&origin=' + ap.placetocode(
+        loc) + '&originCountry=IN&destination=' + ap.placetocode(dairp) + '&destinationCountry=IN&flight_depart_date=' + \
+                 date[0] + '%2F' + date[1] + '%2F' + date[2] + '&ADT=1&CHD=0&INF=0&preferred=&class=Economy&source=seo'
+    webbrowser.open(flightlink, new=2)
+
+
+def callcab():
+    print('Which taxi servide do yoneed? Uber or OlaCab')
+    speak('Which taxi servide do yoneed? Uber or OlaCab')
+    taxys = input()
+    if taxys.find('uber') >= 0:
+        webbrowser.open('https://www.olacabs.com/', new=2)
+    else:
+        webbrowser.open('https://www.uber.com/in/en/', new=2)
+
+
+def trainbook():
+    print('Tellme the starting point')
+    speak('Tellme the starting point')
+    spoint = input()
+    print('Tell me the destination point')
+    speak('Tell me the destination point')
+    dpoint = input()
+    links = list(search('book train from ' + spoint + 'to ' + dpoint,
+                        tld="com", num=1, stop=1, pause=2))
+    print('Here are the available trains from ' + spoint + ' to ' + dpoint)
+    speak('Here are the available trains from ' + spoint + ' to ' + dpoint)
+    webbrowser.open(links[0], new=2)
+
+
+def finalStep():
+    brk = False
+    while 1:
+        print('I am waiting for your response to help you')
+        speak('I am waiting for your response to help you')
+        wordList = [('plane', 'flight', 'air'), ('train', 'rail'), ('cab', 'taxi')]
+        query = input().lower()
+        squery = query.split(' ')
+        for word in squery:
+            if word in wordList[0]:
+                flightbook()
+            elif word in wordList[2]:
+                callcab()
+            elif word in ['pnr']:
+                print('Enter PNR Number')
+                speak('Enter PNR Number')
+                pnr = input()
+                webbrowser.open('https://erail.in/pnr-status/' + pnr, new=2)
+            elif word in wordList[1]:
+                trainbook()
+            elif word in ['explore']:
+                brk = True
+                break
+            else:
+                print('I cant understand what you are trying to say')
+                speak('I cant understand what you are trying to say')
+        if brk:
+            break
+    placeFix()
+
 
 
 init()
+finalStep()
