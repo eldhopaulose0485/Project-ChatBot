@@ -3126,7 +3126,6 @@ agoutas
 agouti
 agoutis
 agouty
-agra
 agraffe
 agraffes
 agranulocytosis
@@ -5203,7 +5202,6 @@ amrita
 amritas
 amritattva
 amrits
-amritsar
 amsted
 amsterdam
 amtman
@@ -8700,7 +8698,6 @@ arracachas
 arrack
 arracks
 arragonite
-arrah
 arrahs
 arraign
 arraigned
@@ -12204,7 +12201,6 @@ balls
 ballsed
 ballsy
 ballup
-bally
 ballyhoo
 ballyhooed
 ballyhooing
@@ -12429,7 +12425,6 @@ banes
 banff
 banffshire
 bang
-bangalore
 banged
 banger
 bangers
@@ -15312,7 +15307,6 @@ bheesty
 bhel
 bhels
 bhindi
-bhopal
 bhutan
 bhutto
 bi
@@ -55385,7 +55379,6 @@ ernie
 erning
 erns
 ernst
-erode
 eroded
 erodent
 erodents
@@ -86810,7 +86803,6 @@ jaina
 jainism
 jainist
 jainists
-jaipur
 jakarta
 jake
 jakes
@@ -87657,7 +87649,6 @@ jodel
 jodelled
 jodelling
 jodels
-jodhpur
 jodhpurs
 jodrell
 joe
@@ -95577,7 +95568,6 @@ luckiness
 luckless
 lucklessly
 lucklessness
-lucknow
 lucks
 lucky
 lucrative
@@ -97596,7 +97586,6 @@ mangabeiras
 mangabey
 mangabeys
 mangal
-mangalore
 mangals
 manganate
 manganates
@@ -97628,7 +97617,6 @@ mangler
 manglers
 mangles
 mangling
-mango
 mangoes
 mangold
 mangolds
@@ -99050,7 +99038,6 @@ matzoons
 matzos
 matzot
 matzoth
-mau
 maud
 maudlin
 maudlinism
@@ -107016,7 +107003,6 @@ myrtus
 mys
 myself
 mysophobia
-mysore
 mystagogic
 mystagogical
 mystagogue
@@ -107220,7 +107206,6 @@ nagor
 nagorno
 nagors
 nagoya
-nagpur
 nags
 nahal
 nahals
@@ -116987,7 +116972,6 @@ palfrey
 palfreyed
 palfreys
 palgrave
-pali
 palier
 paliest
 palification
@@ -119185,7 +119169,6 @@ patisserie
 patisseries
 patly
 patmos
-patna
 patness
 patois
 patonce
@@ -141145,7 +141128,6 @@ revved
 revving
 revying
 rew
-rewa
 reward
 rewardable
 rewardableness
@@ -144676,7 +144658,6 @@ saleability
 saleable
 saleableness
 saleably
-salem
 salemanship
 salep
 saleps
@@ -145675,7 +145656,6 @@ satanity
 satanology
 satanophany
 satanophobia
-satara
 sataras
 satay
 satays
@@ -164600,7 +164580,6 @@ surahs
 sural
 surance
 suras
-surat
 surbahar
 surbahars
 surbase
@@ -169802,7 +169781,6 @@ thanatophobia
 thanatopsis
 thanatos
 thanatosis
-thane
 thanedom
 thanedoms
 thanehood
@@ -177042,7 +177020,6 @@ ubiquitous
 ubiquitously
 ubiquitousness
 ubiquity
-udaipur
 udal
 udaller
 udallers
