@@ -197,14 +197,18 @@ def finalStep():
     while 1:
         print('I am waiting for your response to help you')
         speak('I am waiting for your response to help you')
-        wordList = [('plane', 'flight', 'air'), ('train', 'rail'), ('cab', 'taxi')]
+        wordList = [('plane', 'flight', 'air'), ('train', 'rail'),('bus', 'ticket', 'tickets'), ('cab', 'taxi')]
         query = input().lower()
         squery = query.split(' ')
         for word in squery:
             if word in wordList[0]:
+                print('Here you can book  flight tickets')
+                speak('Here you can book  flight tickets')
                 flightbook()
                 break
-            elif word in wordList[2]:
+            elif word in wordList[3]:
+                print('Here you can book Taxi tickets')
+                speak('Here you can book  Taxi tickets')
                 callcab()
                 break
             elif word in ['pnr']:
@@ -214,10 +218,21 @@ def finalStep():
                 webbrowser.open('https://erail.in/pnr-status/' + pnr, new=2)
                 break
             elif word in wordList[1]:
+                print('Here you can book train tickets')
+                speak('Here you can book train tickets')
                 trainbook()
                 break
             elif word in ['explore']:
                 brk = True
+                break
+            elif word in wordList[2]:
+                print('Here you can book bus tickets')
+                speak('Here you can book bus tickets')
+                webbrowser.open('https://www.makemytrip.com/bus-tickets/', new=2)
+                break
+            elif word in ['thankyou']:
+                print('Dont mention it. I am always happy to help you')
+                speak('Dont mention it. I am always happy to help you')
                 break
         else:
             print('I cant understand what you are trying to say')
