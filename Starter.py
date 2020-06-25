@@ -105,8 +105,8 @@ def step2():
 
 
 def roomsFind():
-    print('Then do you want to see available rooms in ' + response)
-    speak('Then do you want to see available rooms in ' + response)
+    print('Then do you want to see available hotels in ' + response)
+    speak('Then do you want to see available hotels in ' + response)
     roomRespond = input()
     if roomRespond.find('ye') >= 0 or roomRespond.find('ok') >= 0 or roomRespond.find('see') >= 0:
         print("What type of hotels you are expecting?: ")
@@ -169,8 +169,8 @@ def flightbook():
 
 
 def callcab():
-    print('Which taxi servide do yoneed? Uber or OlaCab')
-    speak('Which taxi servide do yoneed? Uber or OlaCab')
+    print('Which taxi service do you need? Uber or OlaCab')
+    speak('Which taxi service do you need? Uber or OlaCab')
     taxys = input()
     if taxys.find('uber') >= 0:
         webbrowser.open('https://www.olacabs.com/', new=2)
@@ -179,8 +179,8 @@ def callcab():
 
 
 def trainbook():
-    print('Tellme the starting point')
-    speak('Tellme the starting point')
+    print('Tell me the starting point')
+    speak('Tell me the starting point')
     spoint = input()
     print('Tell me the destination point')
     speak('Tell me the destination point')
@@ -203,21 +203,25 @@ def finalStep():
         for word in squery:
             if word in wordList[0]:
                 flightbook()
+                break
             elif word in wordList[2]:
                 callcab()
+                break
             elif word in ['pnr']:
                 print('Enter PNR Number')
                 speak('Enter PNR Number')
                 pnr = input()
                 webbrowser.open('https://erail.in/pnr-status/' + pnr, new=2)
+                break
             elif word in wordList[1]:
                 trainbook()
+                break
             elif word in ['explore']:
                 brk = True
                 break
-            else:
-                print('I cant understand what you are trying to say')
-                speak('I cant understand what you are trying to say')
+        else:
+            print('I cant understand what you are trying to say')
+            speak('I cant understand what you are trying to say')
         if brk:
             break
     placeFix()
