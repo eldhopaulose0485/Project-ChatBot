@@ -173,9 +173,9 @@ def callcab():
     speak('Which taxi service do you need? Uber or OlaCab')
     taxys = input()
     if taxys.find('uber') >= 0:
-        webbrowser.open('https://www.olacabs.com/', new=2)
-    else:
         webbrowser.open('https://www.uber.com/in/en/', new=2)
+    else:
+        webbrowser.open('https://www.olacabs.com/', new=2)
 
 
 def trainbook():
