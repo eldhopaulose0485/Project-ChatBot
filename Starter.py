@@ -182,8 +182,8 @@ def trainbook():
     print('Tell me the starting point')
     speak('Tell me the starting point')
     spoint = input()
-    print('Tell me the destination point')
-    speak('Tell me the destination point')
+    print('Tell me the destination point ')
+    speak('Tell me the destination point ')
     dpoint = input()
     links = list(search('book train from ' + spoint + 'to ' + dpoint,
                         tld="com", num=1, stop=1, pause=2))
